@@ -1,0 +1,45 @@
+PODS:
+  - AFNetworking (2.5.1):
+    - AFNetworking/NSURLConnection (= 2.5.1)
+    - AFNetworking/NSURLSession (= 2.5.1)
+    - AFNetworking/Reachability (= 2.5.1)
+    - AFNetworking/Security (= 2.5.1)
+    - AFNetworking/Serialization (= 2.5.1)
+    - AFNetworking/UIKit (= 2.5.1)
+  - AFNetworking/NSURLConnection (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.1)
+  - AFNetworking/Security (2.5.1)
+  - AFNetworking/Serialization (2.5.1)
+  - AFNetworking/UIKit (2.5.1):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - ARChromeActivity (1.0.2)
+  - HTMLReader (0.6.1)
+  - KINWebBrowser (1.1.0):
+    - ARChromeActivity (= 1.0.2)
+    - TUSafariActivity (= 1.0.2)
+  - SVProgressHUD (1.1.2)
+  - TUSafariActivity (1.0.2)
+
+DEPENDENCIES:
+  - AFNetworking
+  - HTMLReader
+  - KINWebBrowser
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  ARChromeActivity: 437b3e0c4cc43c19d7dd1af55bea98e008335151
+  HTMLReader: dbcd34d10785e73b3763ab4a534ffa65b669acbd
+  KINWebBrowser: 1257552078f807e9ed9c0e3d7e42adbce760f10e
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  TUSafariActivity: 63c6b0584d1f0a731e955c0e4d9c89cde63bedc2
+
+COCOAPODS: 0.35.0

@@ -45,6 +45,22 @@ class MasterViewController: UITableViewController {
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
+    
+    func request() {
+        let URL = NSURL(string: "https://www.wantedly.com/projects.xml")
+        //let feedParser = MWFeedParser(feedURL: URL);
+        //feedParser.delegate = self
+        //feedParser.parse()
+    }
+    
+    func feedParserDidStart() {
+        SVProgressHUD.show()
+    }
+    
+    func feedParserDidFinish() {
+        SVProgressHUD.dismiss()
+        self.tableView.reloadData()
+    }
 
     // MARK: - Segues
 
