@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5C2F181BAD5D08D8B2BC06EA"
+               BlueprintIdentifier = "AA43D8EFC78BB18FBA47B09E"
                BuildableName = "libPods-KINWebBrowser.a"
                BlueprintName = "Pods-KINWebBrowser"
                ReferencedContainer = "container:Pods.xcodeproj">

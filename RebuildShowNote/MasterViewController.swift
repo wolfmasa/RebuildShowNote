@@ -8,10 +8,12 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController, MWFeedParserDelegate {
 
     var detailViewController: DetailViewController? = nil
-    var objects = NSMutableArray()
+    
+    var topUrl = "http://feeds.rebuild.fm/rebuildfm"
+    var items = [MWFeedItem]()
 
 
     override func awakeFromNib() {
@@ -27,12 +29,42 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
+        /**
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
+**/
+        request()
+    }
+    
+    func request() {
+        let url = NSURL(string: self.topUrl)
+        let feedParser = MWFeedParser(feedURL: url);
+        feedParser.delegate = self
+        feedParser.parse()
+    }
+    
+    func feedParserDidStart(parser: MWFeedParser) {
+        SVProgressHUD.show()
+        self.items = [MWFeedItem]()
+    }
+    
+    func feedParserDidFinish(parser: MWFeedParser) {
+        SVProgressHUD.dismiss()
+        self.tableView.reloadData()
+    }
+    
+    func feedParser(parser: MWFeedParser, didParseFeedInfo info: MWFeedInfo) {
+        println(info)
+        self.title = info.title
+    }
+    
+    func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
+        println(item)
+        self.items.append(item)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,34 +72,20 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /**
     func insertNewObject(sender: AnyObject) {
-        objects.insertObject(NSDate(), atIndex: 0)
+        self.items.insertObject(NSDate(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
     }
-    
-    func request() {
-        let URL = NSURL(string: "https://www.wantedly.com/projects.xml")
-        //let feedParser = MWFeedParser(feedURL: URL);
-        //feedParser.delegate = self
-        //feedParser.parse()
-    }
-    
-    func feedParserDidStart() {
-        SVProgressHUD.show()
-    }
-    
-    func feedParserDidFinish() {
-        SVProgressHUD.dismiss()
-        self.tableView.reloadData()
-    }
+**/
 
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
+                let object = self.items[indexPath.row]
                 let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -78,36 +96,45 @@ class MasterViewController: UITableViewController {
 
     // MARK: - Table View
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 100
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return self.items.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel!.text = object.description
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "FeedCell")
+        self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
-
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let item = self.items[indexPath.row] as MWFeedItem
+        let con = KINWebBrowserViewController()
+        let URL = NSURL(string: item.link)
+        con.loadURL(URL)
+        self.navigationController?.pushViewController(con, animated: true)
     }
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
+    
+    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+        let item = self.items[indexPath.row] as MWFeedItem
+        cell.textLabel?.text = item.title
+        cell.textLabel?.font = UIFont.systemFontOfSize(14.0)
+        cell.textLabel?.numberOfLines = 0
+        
+        
+        let projectURL = item.link.componentsSeparatedByString("?")[0]
+        let imgURL: NSURL? = NSURL(string: projectURL + "/cover_image?style=200x200#")
+        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.imageView?.setImageWithURL(imgURL, placeholderImage: UIImage(named: "logo.jpeg"))
     }
-
-
 }
+
+
 

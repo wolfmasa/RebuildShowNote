@@ -5,3 +5,4 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import <KINWebBrowser/KINWebBrowserViewController.h>
 #import <HTMLReader/HTMLReader.h>
+#import "MWFeedParser.h"
