@@ -58,12 +58,12 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
     }
     
     func feedParser(parser: MWFeedParser, didParseFeedInfo info: MWFeedInfo) {
-        println(info)
+        //println(info)
         self.title = info.title
     }
     
     func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
-        println(item)
+        //println(item)
         self.items.append(item)
     }
 
@@ -128,11 +128,19 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
         cell.textLabel?.font = UIFont.systemFontOfSize(14.0)
         cell.textLabel?.numberOfLines = 0
         
-        
         let projectURL = item.link.componentsSeparatedByString("?")[0]
         let imgURL: NSURL? = NSURL(string: projectURL + "/cover_image?style=200x200#")
         cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         cell.imageView?.setImageWithURL(imgURL, placeholderImage: UIImage(named: "logo.jpeg"))
+        
+        
+        //println(item.summary)
+        
+        var summary = item.summary as NSString
+        var result = summary.rangeOfString("<li>[^<]?</li>", options: NSStringCompareOptions.RegularExpressionSearch)
+        
+        println(summary.substringWithRange(result))
+        
     }
 }
 
