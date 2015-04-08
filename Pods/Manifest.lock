@@ -25,6 +25,7 @@ PODS:
   - KINWebBrowser (1.1.0):
     - ARChromeActivity (= 1.0.2)
     - TUSafariActivity (= 1.0.2)
+  - MNMPullToRefresh (0.0.1)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser (= 1.0.1)
     - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
@@ -41,16 +42,18 @@ DEPENDENCIES:
   - AFNetworking
   - HTMLReader
   - KINWebBrowser
+  - MNMPullToRefresh
   - MWFeedParser
   - SVProgressHUD
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  ARChromeActivity: 437b3e0c4cc43c19d7dd1af55bea98e008335151
-  HTMLReader: dbcd34d10785e73b3763ab4a534ffa65b669acbd
-  KINWebBrowser: 1257552078f807e9ed9c0e3d7e42adbce760f10e
-  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
-  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
-  TUSafariActivity: 63c6b0584d1f0a731e955c0e4d9c89cde63bedc2
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  ARChromeActivity: 6488aedc8dd0624b103ea8caf6218e52692aaf77
+  HTMLReader: cf33ffa3e09594f7a1787c244ddaa52c2118e792
+  KINWebBrowser: 6aeaf6f34a99ed31a49eebf5457581718f08961e
+  MNMPullToRefresh: 33a0a2a51f0244ebe2464cddcb1be8f8ac8e24f3
+  MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+  SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
+  TUSafariActivity: 32e3e5dc9123e5533a42d41e1c3246d12911a4a2
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.3

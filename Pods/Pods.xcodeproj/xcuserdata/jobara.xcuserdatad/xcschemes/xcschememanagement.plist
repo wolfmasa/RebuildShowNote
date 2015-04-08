@@ -8,109 +8,101 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>Pods-ARChromeActivity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Pods-HTMLReader.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Pods-KINWebBrowser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
+		</dict>
+		<key>Pods-MNMPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MWFeedParser.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>Pods-SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
+		</dict>
+		<key>Pods-TUSafariActivity-TUSafariActivity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-TUSafariActivity.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>TUSafariActivity.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>228E45C5562866CC29204BD2</key>
+		<key>003BB6A509337685ABE4B905</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>22A697C23782502FFA72EB95</key>
+		<key>25EED24F8CF5C1C527E8E000</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41095257ECE4B1B560D33155</key>
+		<key>266A590078196D825C82FAE3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66AE338C019BF7BE064F0FBF</key>
+		<key>37A91EDE4B9CC0C094ECDE15</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8266B9367BB00D2C146D0E0D</key>
+		<key>647A4731FCDB3B316ED749B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>961DB4CC66463CBBDB0D7A2C</key>
+		<key>7473EA725D1B651BA198829C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AA43D8EFC78BB18FBA47B09E</key>
+		<key>819422B5121EB629E6511A7D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ADD78ECF08ABAD0E492512CD</key>
+		<key>87E3D4578DE871E55164FD71</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E210438B56E040F854ACFE27</key>
+		<key>DD97563C80ACAC78883E8A92</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5E6D970EF6040C5202585EC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

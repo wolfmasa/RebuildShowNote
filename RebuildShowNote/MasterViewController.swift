@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController, MWFeedParserDelegate {
+class MasterViewController: UITableViewController, MWFeedParserDelegate, MNMPullToRefreshManagerClient {
 
     var detailViewController: DetailViewController? = nil
     
@@ -37,6 +37,8 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
         }
 **/
+        var manager = MNMPullToRefreshManager(pullToRefreshViewHeight: 50, tableView: self.tableView, withClient: self)
+        
         request()
     }
     
@@ -95,10 +97,6 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
     }
 
     // MARK: - Table View
-
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
-    }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -130,8 +128,8 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
         
         let projectURL = item.link.componentsSeparatedByString("?")[0]
         let imgURL: NSURL? = NSURL(string: projectURL + "/cover_image?style=200x200#")
-        cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.imageView?.setImageWithURL(imgURL, placeholderImage: UIImage(named: "logo.jpeg"))
+        //cell.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        //cell.imageView?.setImageWithURL(imgURL, placeholderImage: UIImage(named: "logo.jpeg"))
         
         
         //println(item.summary)
@@ -139,8 +137,23 @@ class MasterViewController: UITableViewController, MWFeedParserDelegate {
         var summary = item.summary as NSString
         var result = summary.rangeOfString("<li>[^<]?</li>", options: NSStringCompareOptions.RegularExpressionSearch)
         
-        println(summary.substringWithRange(result))
+        println(summary)
         
+    }
+// MARK: MasterViewControllerClient
+    override func scrollViewDidScroll(scrollView: UIScrollView!) {
+        //scrollViewDidScroll(scrollView!)
+        println("scrollView")
+    }
+    
+    override func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+        //scrollViewDidEndDragging(scrollView!, willDecelerate: decelerate)
+        println("scrollViewDidEndDragging")
+        request()
+    }
+    
+    func pullToRefreshTriggered(manager: MNMPullToRefreshManager!) {
+        println("pull")
     }
 }
 

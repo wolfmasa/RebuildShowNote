@@ -6,6 +6,7 @@
 #import <KINWebBrowser/KINWebBrowserViewController.h>
 #import <HTMLReader/HTMLReader.h>
 #import "MWFeedParser.h"
+#import "MNMPullToRefresh/MNMPullToRefreshManager.h"
 
 #import <libxml/HTMLtree.h>
 #import <libxml/xpath.h>
